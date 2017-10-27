@@ -1,32 +1,27 @@
-from django.shortcuts import render
 from django.http import HttpResponse
-
-# Create your views here.
-
+from django.http import Http404
 from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from keras.models import load_model
 # Create your views here.
 
-@csrf_protect
+@csrf_exempt
 def evaluateAbstract(request):
-    #template = loader.get_template('abstractEvaluate/index.html')
-    if request.method == 'POST':
-        #templateName = 'abstractEvaluate/index.html'
-        text = request.POST.get("abstract")
-        result = {'MAH': False, 'reportable' : False}
-        print(text)
-        textLength = len(text)
-        if (textLength < 5):
-            result['MAH'] = False
-            result['reportable'] = False
-        elif (textLength >= 5 and textLength <= 8):
-            result['MAH'] = True
-            result['reportable'] = False
-        else:
-            result['MAH'] = True
-            result['reportable'] = True
-        context = {'result': result}
-        return render(request, 'abstractEvaluate/index.html', context)
+    if request.method == "POST":
+        try:
+            print(request)
+            abstractText = str(request.POST.get("abstractText"))
+        except KeyError:
+            return HttpResponse('Error')  # incorrect post
+
+        reportable = False
+        if len(abstractText) > 20:
+            reportable = True
+
+        response_data = {'reportable' : reportable}
+        return JsonResponse(response_data)
     response = HttpResponse()
-    response.write("<h1>please set post request through evaluate</h1>")
+    response.write("<h1>Please send post request through evaluate</h1>")
     return response
 

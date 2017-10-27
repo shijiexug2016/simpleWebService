@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Drug Safety with Machine Learning{% endblock %}</title>
+</head>
+<body>
+
+    <main>
+        <header>ProQuest Drug Abstract MAH and reportable evaluation</header>
+            {% block content %}
+                <a href = "{% url 'abstract-evaluate-ui' %}">Abstract Evaluate</a>
+
+            {% endblock %}
+        <footer>IDK?</footer>
+    </main>
+    <script type="text/javascript" src="{% static '/js/jquery.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'static_jquery/js/jquery.js' %}"></script>
+
+    {% block javascript %}{% endblock %}
+</body>
+</html>

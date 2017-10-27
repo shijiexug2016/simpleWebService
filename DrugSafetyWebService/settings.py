@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'abstractEvaluate.apps.AbstractevaluateConfig',
     'abstractEvaluate_api.apps.AbstractevaluateApiConfig',
+    'homePage.apps.HomepageConfig',
+    'django_static_jquery',
+    'jquery',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,5 +126,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    '/abstractEvaluate_api/static/abstractEvaluate_api/',
+    #'/abstractEvaluate/static/js/',
 ]

@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Drug Safety with Machine Learning</title>
-</head>
-<body>
+{% extends 'homePage/base.html' %}
+
+{% block content %}
+<a href = "{% url 'home-page' %}">Home Page</a>
 <h1>Evaluate an Abstract</h1>
 <p>Copy and Paste an abstract into the text box below:</p>
-<form method = "post" action="{% url 'evaluate-abstract' %}">{% csrf_token %}
-<textarea name="abstract" rows = "15", cols = "50" ></textarea><br>
-<button type="submit">Submit</button>
+<form method = "post" action = "">{% csrf_token %}
+<textarea id="abstract-text" name="abstract" rows = "15", cols = "50" ></textarea><br>
+<button type="submit" id = "submit-abstract">Submit</button>
 </form>
-{% if result %}
-<p>MAH: {{result.MAH}}</p>
-<p>Reportable: {{result.reportable}}</p>
-<!--<p>{{result.text}}-->
-{% endif %}
+<div id = "abstract-reportable-evaluation"></div>
+
+
 
 {% load staticfiles %}
-<img src = "{% static "abstractEvaluate_api/random-pictures-74.jpg" %}" alt = "my pic"/>
+<script type="text/javascript" src= "{% static '/js/jquery.js' %}"></script>
+<script type="text/javascript" src = "{% static 'js/submitEvaluate.js' %}"></script>
 
-</body>
-</html>
+{% endblock %}
+
+
