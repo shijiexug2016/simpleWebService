@@ -2,22 +2,53 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Drug Safety with Machine Learning{% endblock %}</title>
+		<!-- Required meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta charset="UTF-8">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<title>{% block title %}Drug Safety with Machine Learning{% endblock %}</title>
 </head>
+
+<style>
+		body {
+				padding-top: 65px;
+		}
+</style>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="{% url 'home-page' %}">ProQuest Drug Safety Tool</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<!--<li class="nav-item">
+				<a class="nav-link" href="{% url 'home-page' %}">Home <span class="sr-only">(current)</span></a>
+			</li>-->
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'abstract-evaluate-ui' %}">Abstract Evaluate</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
 <body>
+		<main role="main" class="container">
+				<div class='starter-template'>
+						{% block content %}
 
-    <main>
-        <header>ProQuest Drug Abstract MAH and reportable evaluation</header>
-            {% block content %}
-                <a href = "{% url 'abstract-evaluate-ui' %}">Abstract Evaluate</a>
+								<a href = "{% url 'abstract-evaluate-ui' %}">Abstract Evaluate</a>
 
-            {% endblock %}
-        <footer>IDK?</footer>
-    </main>
-    <script type="text/javascript" src="{% static '/js/jquery.js' %}" ></script>
-    <script type="text/javascript" src="{% static 'static_jquery/js/jquery.js' %}"></script>
+						{% endblock %}
+				</div>
+				<footer>Created by ProQuest Drug Safety Student Team</footer>
+		</main>
+		<script type="text/javascript" src="{% static '/js/jquery.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'static_jquery/js/jquery.js' %}"></script>
 
-    {% block javascript %}{% endblock %}
+		{% block javascript %}{% endblock %}
 </body>
 </html>
